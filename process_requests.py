@@ -49,7 +49,7 @@ def authenticate(CONSUMER_SECRET,CONSUMER_KEY,ACCESS_SECRET,ACCESS_TOKEN):
 #makes the request and saves result in a log file
 def request_log(api):
 	outfile = open(args.outfile, "w")
-	for status in tweepy.Cursor(api.search,q=('#'+str(args.hashtags[0]))).items(2):
+	for status in tweepy.Cursor(api.search,q=('#'+str(args.hashtags[0]))).items(args.N):
 		print('w')
 		outfile.write(json.dumps(status._json)+"\n")
 	outfile.close()
@@ -69,6 +69,7 @@ if __name__ == '__main__':
 	parser = argparse.ArgumentParser(description='python script to request tweets depending on hashtags')
 	# Required positional argument
 	parser.add_argument('--api', help='required config file with API keys')
+	parser.add_argument('-N', type=int,help='number of tweets to monitor')
 	parser.add_argument('hashtags', metavar='#', nargs='+', help='hashtags to browse')
 	parser.add_argument('--outfile', help='optionnal output file (json format)')
 	args = parser.parse_args()

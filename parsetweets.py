@@ -33,6 +33,7 @@ def print_tweets(fileobj):
             continue
 
 def print_light(fileobj):
+    print('The following tweets were captured : \n')
     for line in tweets_file:
         try:
             # Read in one line of the file, convert it into a json object 
