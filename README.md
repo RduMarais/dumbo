@@ -19,6 +19,7 @@ access_token = <THE_ACCESS_TOKEN>
 ```
 
 ## usage
+get tweets :
 ```
 usage: try_tweepy.py [-h] [--api API] [--outfile OUTFILE] # [# ...]
 
@@ -31,4 +32,14 @@ optional arguments:
   -h, --help         show this help message and exit
   --api API          required config file with API keys, ex : --api ../config.ini
   --outfile OUTFILE  optionnal output file (json format)
+```
+parse and display tweets :
+```
+usage: parsetweets.py [-h] [--infile INFILE]
+
+python script to parse tweets requested
+
+optional arguments:
+  -h, --help       show this help message and exit
+  --infile INFILE  required input file (json format)
 ```

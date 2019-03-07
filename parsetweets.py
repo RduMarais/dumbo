@@ -2,9 +2,11 @@
 
 # Import the necessary package to process data in JSON format
 import json
+import argparse
+
 
 # We use the file saved from last step as example
-tweets_filename = 'test2.json'
+tweets_filename = 'people.json'
 tweets_file = open(tweets_filename, "r")
 
 def print_tweets(fileobj):
@@ -52,4 +54,11 @@ def print_light(fileobj):
             # read in a line is not in JSON format (sometimes error occured)
             continue    
 
-print_light(tweets_file)
+if __name__ == '__main__':
+    # Instantiate the parser
+    parser = argparse.ArgumentParser(description='python script to parse tweets requested')
+    parser.add_argument('--infile', help='required input file (json format)')
+    args = parser.parse_args()
+
+    print('using config file : '+str(args.api))
+    print_light(args.infile)
