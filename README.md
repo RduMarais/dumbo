@@ -10,13 +10,13 @@ install python library tweepy using pip : (use pip3 for disambiguation, since we
 ## configuration
 put in a config file your API keys as : 
 
-`
+```
 [API]
 consumer_key = <THE_CONSUMER_KEY>
 consumer_secret = <THE_CONSUMER_SECRET_KEY>
 access_secret = <THE_ACCESS_SECRET_KEY>
 access_token = <THE_ACCESS_TOKEN>
-`
+```
 
 ## usage
 ```
