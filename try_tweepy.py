@@ -28,7 +28,7 @@ def init(config_file_name):
 
 
 # Setup tweepy to authenticate with Twitter credentials:
-def authenticate():
+def authenticate(CONSUMER_SECRET,CONSUMER_KEY,ACCESS_SECRET,ACCESS_TOKEN):
 	auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 	auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
 
@@ -46,12 +46,17 @@ def authenticate():
 # The following loop will print most recent statuses, including retweets, posted by the authenticating user and that users friends. 
 # This is the equivalent of /timeline/home on the Web.
 #---------------------------------------------------------------------------------------------------------------------
-def resquest(api):
-	for status in tweepy.Cursor(api.home_timeline).items(5):
-		process_status(status)
+def request_log(api):
+	outfile = open(args.outfile, "w")
+	for status in tweepy.Cursor(api.home_timeline).items(2):
+		print('w')
+		outfile.write(json.dumps(status._json)+"\n")
+	outfile.close()
 
-def process_status(status):
-	print(json.dumps(status._json))
+def request_print(api):
+	for status in tweepy.Cursor(api.home_timeline).items(2):
+		print(json.dumps(status._json))
+
 #---------------------------------------------------------------------------------------------------------------------
 # Twitter API development use pagination for Iterating through timelines, user lists, direct messages, etc. 
 # To help make pagination easier and Tweepy has the Cursor object.
@@ -71,4 +76,10 @@ if __name__ == '__main__':
 	# print(CONSUMER_SECRET)
 	# print(CONSUMER_KEY)
 	print('browse hashtags : '+str(args.hashtags))
-	# request(authenticate(CONSUMER_SECRET,CONSUMER_KEY,ACCESS_SECRET,ACCESS_TOKEN))
+	if(args.outfile):
+		print('outfile : '+str(args.outfile))
+		request_log(authenticate(CONSUMER_SECRET,CONSUMER_KEY,ACCESS_SECRET,ACCESS_TOKEN))
+	else:
+		print('no outfile')
+		request_print(authenticate(CONSUMER_SECRET,CONSUMER_KEY,ACCESS_SECRET,ACCESS_TOKEN))
+	
