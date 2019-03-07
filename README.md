@@ -1,7 +1,7 @@
 # DUMBO 
 
 python3 script for listening to twitter hashtags
-forked from the tutorial [here, bei Wei XU](http://socialmedia-class.org/twittertutorial.html).
+forked from the tutorial [here, by Wei XU](http://socialmedia-class.org/twittertutorial.html).
 
 ## dependencies
 install python library tweepy using pip : (use pip3 for disambiguation, since we use python3)
@@ -19,7 +19,7 @@ access_token = <THE_ACCESS_TOKEN>
 ```
 
 ## usage
-###get tweets :
+### get tweets :
 ```
 usage: try_tweepy.py [-h] [--api API] [--outfile OUTFILE] # [# ...]
 
@@ -33,7 +33,7 @@ optional arguments:
   --api API          required config file with API keys, ex : --api ../config.ini
   --outfile OUTFILE  optionnal output file (json format)
 ```
-###parse and display tweets :
+### parse and display tweets :
 ```
 usage: parsetweets.py [-h] [--infile INFILE]
 
