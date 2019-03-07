@@ -46,13 +46,15 @@ def authenticate(CONSUMER_SECRET,CONSUMER_KEY,ACCESS_SECRET,ACCESS_TOKEN):
 # The following loop will print most recent statuses, including retweets, posted by the authenticating user and that users friends. 
 # This is the equivalent of /timeline/home on the Web.
 #---------------------------------------------------------------------------------------------------------------------
+#makes the request and saves result in a log file
 def request_log(api):
 	outfile = open(args.outfile, "w")
-	for status in tweepy.Cursor(api.home_timeline).items(2):
+	for status in tweepy.Cursor(api.search,q=('#'+str(args.hashtags[0]))).items(2):
 		print('w')
 		outfile.write(json.dumps(status._json)+"\n")
 	outfile.close()
 
+#makes the requests and diplays raw json
 def request_print(api):
 	for status in tweepy.Cursor(api.home_timeline).items(2):
 		print(json.dumps(status._json))
