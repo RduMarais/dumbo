@@ -70,7 +70,7 @@ if __name__ == '__main__':
 	# Required positional argument
 	parser.add_argument('--api', help='required config file with API keys')
 	parser.add_argument('-N', type=int,help='number of tweets to monitor')
-	parser.add_argument('hashtags', metavar='#', nargs='+', help='hashtags to browse')
+	parser.add_argument('hashtags', required=True, metavar='#', nargs='+', help='hashtags to browse')
 	parser.add_argument('--outfile', help='optionnal output file (json format)')
 	args = parser.parse_args()
 
